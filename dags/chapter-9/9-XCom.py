@@ -10,7 +10,7 @@ def extract_result(**context):
 
 with DAG(dag_id="8-XCom",
          description="Probando los XCom",
-         schedule_interval="0 * * * *",
+         schedule_interval="@daily",
          start_date=datetime(2022, 1, 1),
          end_date=datetime(2022, 6, 1),
          default_args=default_args,
