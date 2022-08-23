@@ -34,8 +34,8 @@ with DAG(dag_id="proyecto_platzi",
     )
 
     # RECUERDA CREAR LA CONEXION
-    sensor1_task = FileSensor(task_id= "waiting_nasa_confirmation",
-                              poke_interval= 30,  filepath= "/tmp/response_{{ds_nodash}}.txt" )
+    sensor1_task = FileSensor(task_id="waiting_nasa_confirmation",
+                              poke_interval=30,  filepath="/tmp/response_{{ds_nodash}}.txt" )
 
     task2 = BashOperator(task_id="get_spacex_data",
                       bash_command="curl -o /tmp/history.json -L 'https://api.spacexdata.com/v4/history'")

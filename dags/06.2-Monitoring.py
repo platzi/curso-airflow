@@ -39,7 +39,7 @@ with DAG(dag_id="6.2-monitoring",
                       depends_on_past=True)
 
     t4 = PythonOperator(task_id="tarea4",
-                        python_callable= myfunction,
+                        python_callable=myfunction,
                         retries=2,
                         retry_delay=5,
                       trigger_rule=TriggerRule.ALL_SUCCESS,
