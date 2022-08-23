@@ -5,14 +5,13 @@ from datetime import datetime
 
 default_args = {"depends_on_past": True}
 
-def extract_result(**context):
-    print(int(context['ti'].xcom_pull(task_ids='tarea2')) - 24)
+def myfunction(**context):
+    print(int(context["ti"].xcom_pull(task_ids='tarea2')) - 24)
 
-with DAG(dag_id="8-XCom",
+with DAG(dag_id="9-XCom",
          description="Probando los XCom",
-         schedule_interval="@daily",
+         schedule_interval="@once",
          start_date=datetime(2022, 1, 1),
-         end_date=datetime(2022, 6, 1),
          default_args=default_args,
          max_active_runs=1) as dag:
 
@@ -23,6 +22,7 @@ with DAG(dag_id="8-XCom",
                       bash_command="sleep 3 && echo {{ ti.xcom_pull(task_ids='tarea1') }}")
 
     t3 = PythonOperator(task_id="tarea3",
-                        python_callable=extract_result)
+                        python_callable=myfunction)
+
 
     t1 >> t2 >> t3

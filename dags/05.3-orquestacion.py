@@ -6,7 +6,7 @@ with DAG(dag_id="5.3-orquestation",
          description="Probando la orquestacion",
          schedule_interval="@monthly",
          start_date=datetime(2022, 1, 1),
-         end_date=datetime(2022, 6, 1)) as dag:
+         end_date=datetime(2022, 8, 1)) as dag:
 
     t1 = EmptyOperator(task_id="tarea1")
 
